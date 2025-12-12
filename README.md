@@ -1,119 +1,112 @@
-Ah! Got it — you want a **creative, polished, GitHub-ready README for PlayHive**, similar to the Planora one I just styled, with a **professional and visually engaging touch**, combining frontend + backend details. Here's a fully refined version:
+🎉 PlayHive – Full Stack Multi-Game Web Platform
+A Complete Gaming Experience with HTML/CSS/JS Frontend & Java Spring Boot Backend
+<p align="center"> <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" /> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" /> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" /> </p>
+📌 Table of Contents
 
----
+Overview
 
-# 🎉 **PlayHive – Full Stack Multi-Game Web Platform**
+Key Features
 
-### *A Complete Gaming Experience with HTML/CSS/JS Frontend & Java Spring Boot Backend*
+Tech Stack
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" />
-  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-</p>
+System Architecture
 
----
+Project Structure
 
-# 📌 **Table of Contents**
+API Overview
 
-1. [Overview](#overview)
-2. [Key Features](#key-features)
-3. [Tech Stack](#tech-stack)
-4. [System Architecture](#system-architecture)
-5. [Project Structure](#project-structure)
-6. [API Overview](#api-overview)
-7. [Frontend–Backend Integration](#frontend–backend-integration)
-8. [How to Run](#how-to-run)
-9. [Issues & Opportunities](#issues--opportunities)
-10. [Future Enhancements](#future-enhancements)
-11. [Developed By](#developed-by)
-12. [License](#license)
+Frontend–Backend Integration
 
----
+How to Run
 
-# 🌿 **Overview**
+Issues & Opportunities
 
-**PlayHive** is a **full-stack web platform** offering multiple mini-games with user accounts, leaderboards, rulebooks, and an admin panel.
+Future Enhancements
 
-It includes:
+Developed By
 
-* MindLoop, ShapeShifter, Emoji Decoder, Syntax Sprint
-* User registration, login, and profile management
-* Leaderboards & score tracking
-* Admin functionality for monitoring and managing the platform
-* REST APIs backed by Spring Boot & MySQL
+License
 
-**Project Folders:**
+🌿 Overview
 
-* `PlayHive Frontend/` – HTML/CSS/JS
-* `PlayHive Backend/` – Spring Boot + MySQL
+PlayHive is a full-stack web platform offering multiple mini-games with:
 
----
+User registration & login
 
-# ⭐ **Key Features**
+Leaderboards & score tracking
 
-## 🎮 Mini-Games
+Rulebooks for each game
 
-* MindLoop – Brain challenges
-* ShapeShifter – Puzzle & pattern game
-* Emoji Decoder – Fun decoding game
-* Syntax Sprint – Coding challenge game
+Admin panel for monitoring users and scores
 
-**Each includes:**
+Project Folders:
 
-* Gameplay page
-* Rulebook
-* Leaderboard (if applicable)
+PlayHive Frontend/ – HTML/CSS/JS
 
-## 👤 User System
+PlayHive Backend/ – Spring Boot + MySQL
 
-* Register & login
-* Profile page & account management
-* Secure logout
+⭐ Key Features
+🎮 Mini-Games
+Game	Features
+MindLoop	Brain challenges
+ShapeShifter	Puzzle & pattern game
+Emoji Decoder	Fun decoding game
+Syntax Sprint	Coding challenge game
 
-## 🧭 General Pages
+Each game includes gameplay, rulebook, and leaderboard (if applicable).
 
-* Home, Games Overview, About Us, Contact, Features
-* Admin Panel
+👤 User System
 
-## 🗂 Backend Supports
+Register & login
 
-* User authentication & authorization
-* Score submission & leaderboard retrieval
-* Database storage in MySQL
-* REST APIs for frontend integration
+Profile page & account management
 
----
+Secure logout
 
-# 🛠 **Tech Stack**
+🧭 General Pages
 
-## **Frontend**
+Home, Games Overview, About Us, Contact, Features
 
-* HTML5, CSS3, JavaScript (ES6)
-* Media assets (JPEG, PNG)
+Admin Panel
 
-## **Backend**
+🗂 Backend Supports
 
-* Java 17+
-* Spring Boot, Spring Web (REST APIs), Spring Data JPA
-* Hibernate ORM
-* MySQL
-* Maven
+User authentication & authorization
 
-## **Tools**
+Score submission & leaderboard retrieval
 
-* Eclipse / IntelliJ IDEA
-* Git / GitHub
-* Browser-based testing
+Database storage in MySQL
 
----
+REST APIs for frontend integration
 
-# 🧱 **System Architecture**
+🛠 Tech Stack
+Frontend
 
-```
+HTML5, CSS3, JavaScript (ES6)
+
+Media assets (JPEG, PNG)
+
+Backend
+
+Java 17+
+
+Spring Boot, Spring Web (REST APIs), Spring Data JPA
+
+Hibernate ORM
+
+MySQL
+
+Maven
+
+Tools
+
+Eclipse / IntelliJ IDEA
+
+Git / GitHub
+
+Browser-based testing
+
+🧱 System Architecture
           ┌──────────────────────────┐
           │        Frontend          │
           │  HTML / CSS / JS         │
@@ -134,15 +127,9 @@ It includes:
           │         MySQL            │
           │  Users / Scores Tables   │
           └──────────────────────────┘
-```
 
----
-
-# 🗂 **Project Structure**
-
-## Frontend
-
-```
+🗂 Project Structure
+Frontend
 PlayHive Frontend/
  ├── index.html
  ├── main.html
@@ -170,11 +157,8 @@ PlayHive Frontend/
  ├── Syntaxsprintrulebook.html
  │
  └── media/
-```
 
-## Backend
-
-```
+Backend
 PlayHive Backend/
  ├── pom.xml
  ├── mvnw, mvnw.cmd
@@ -191,42 +175,24 @@ PlayHive Backend/
  │           ├── login.html
  │           └── signup.html
  └── target/ (compiled output)
-```
 
----
-
-# 🌐 **API Overview**
-
-### **Authentication**
-
-```
+🌐 API Overview
+Authentication
 POST /auth/signup
 POST /auth/login
-```
 
-### **MindLoop**
-
-```
+MindLoop
 POST /mindloop/score
 GET  /mindloop/leaderboard
-```
 
-### **ShapeShifter**
-
-```
+ShapeShifter
 POST /shapeshifter/score
 GET  /shapeshifter/leaderboard
-```
 
-*(Additional controllers can be documented automatically)*
-
----
-
-# 🔗 **Frontend–Backend Integration**
+🔗 Frontend–Backend Integration
 
 Example: login request from frontend:
 
-```js
 fetch("http://localhost:8080/auth/login", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
@@ -237,74 +203,81 @@ fetch("http://localhost:8080/auth/login", {
 })
 .then(res => res.json())
 .then(data => console.log(data));
-```
 
-Pages like `mindloopleaderboard.html` or `shapeshifterleaderboard.html` call backend endpoints to retrieve live scores.
 
----
+Pages like mindloopleaderboard.html or shapeshifterleaderboard.html retrieve live data from backend endpoints.
 
-# ▶️ **How to Run**
-
-## Backend
-
-```bash
+▶️ How to Run
+Backend
 cd PlayHive Backend
 ./mvnw spring-boot:run
-```
 
-*Backend runs at:* `http://localhost:8080`
 
-## Frontend
+Backend runs at: http://localhost:8080
 
-* Open `PlayHive Frontend/index.html` in browser
-* Or use Live Server for local hosting
+Frontend
 
----
+Open PlayHive Frontend/index.html in browser
 
-# ⚠️ **Issues & Opportunities**
+Or host via Live Server
 
-### Frontend
+⚠️ Issues & Opportunities
+Frontend
 
-* Inline JS & CSS, not separated
-* Typo in Syntax Sprint filename
-* Folder name contains a space
-* `.git` folder included accidentally
+Inline JS & CSS (no separation)
 
-### Backend
+Typo in Syntax Sprint filename
 
-* Static login/signup pages differ from frontend
-* Needs CORS config for cross-origin requests
-* No Swagger API docs yet
+Folder name contains a space
 
----
+.git folder included accidentally
 
-# 🌟 **Future Enhancements**
+Backend
 
-* Add more games & levels
-* Responsive & mobile-first UI
-* JWT authentication & security
-* Real-time multiplayer
-* React / Next.js frontend migration
-* Deployment on Render / Vercel / Railway
-* Swagger & API documentation
-* UML & database ER diagrams
+Static login/signup pages differ from frontend
 
----
+Needs CORS config
 
-# 👩‍💻 **Developed By**
+No Swagger / API documentation yet
 
-**Akanksha Sawant**
+🌟 Future Enhancements
 
----
+Add more games & levels
 
-# 🔗 **License**
+Responsive & mobile-first UI
 
-This project is **for learning and personal use only**.
-All code, design, and content are © **Akanksha Sawant – All Rights Reserved**.
-❗ Copying, redistributing, or reusing without permission is prohibited.
+JWT authentication & security
 
----
+Real-time multiplayer
 
-I can also **add visual enhancements** like **animated gradient headers, badges for each game, screenshots, and an API diagram** to make it **look like a portfolio-ready README** similar to top GitHub repos.
+React / Next.js frontend migration
 
-Do you want me to do that next?
+Deployment on Render / Vercel / Railway
+
+Swagger & API documentation
+
+UML & database ER diagrams
+
+👩‍💻 Developed By
+
+Akanksha Sawant
+
+🔗 License
+
+This project is for learning and personal use only.
+All code, design, and content are © Akanksha Sawant – All Rights Reserved.
+❗ Copying or redistribution without permission is prohibited.
+
+If you want, I can make it even more creative with:
+
+Animated gradient headers
+
+Badges per game & feature
+
+Live screenshots or GIFs of games
+
+API flow diagram
+
+This will make the README portfolio-ready and eye-catching.
+
+Do you want me to do that?
