@@ -253,23 +253,10 @@ Backend runs at: `http://localhost:8080`
 
 ---
 
-# 📸 **Screenshot Gallery**
-
-<p align="center">
-  <a href="media/homepage.png"><img src="media/homepage.png" width="150px" /></a>
-  <a href="media/mindloop.png"><img src="media/mindloop.png" width="150px" /></a>
-  <a href="media/shapeshifter.png"><img src="media/shapeshifter.png" width="150px" /></a>
-  <a href="media/emojidecoder.png"><img src="media/emojidecoder.png" width="150px" /></a>
-</p>
 
 ---
 
-# ⚠️ **Issues & Opportunities**
 
-* Frontend: inline JS & CSS, filename typos, folder name spacing
-* Backend: static login/signup differs from frontend, needs CORS config, no Swagger docs yet
-
----
 
 # 🌟 **Future Enhancements**
 
@@ -298,6 +285,3 @@ All code, design, and content are © **Akanksha Sawant – All Rights Reserved**
 
 ---
 
-If you want, I can **also make it visually enhanced** with **animated gradient headers, badges for each mini-game, and a clean portfolio-style layout**—just like top GitHub repos.
-
-Do you want me to do that next?
