@@ -1,118 +1,112 @@
-Here’s a **well-structured, professional GitHub-ready README.md** for **PLANORA**, following the same polished style as your **PlayHive README**:
+Ah! Got it — you want a **creative, polished, GitHub-ready README for PlayHive**, similar to the Planora one I just styled, with a **professional and visually engaging touch**, combining frontend + backend details. Here's a fully refined version:
 
 ---
 
-# 🎉 **PLANORA – Full Stack Event Management & Booking Web Application**
+# 🎉 **PlayHive – Full Stack Multi-Game Web Platform**
 
-PLANORA is a **full-stack JSP + Servlet + JDBC platform** that allows users to explore, register, and book events while providing organizers with an efficient admin backend.
-This README combines analysis of both:
+### *A Complete Gaming Experience with HTML/CSS/JS Frontend & Java Spring Boot Backend*
 
-* **PLANORA Frontend (JSP, HTML, CSS, JS)**
-* **PLANORA Backend (Java Servlets + JDBC + MySQL)**
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" />
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+</p>
 
 ---
 
 # 📌 **Table of Contents**
 
 1. [Overview](#overview)
-2. [Features](#features)
+2. [Key Features](#key-features)
 3. [Tech Stack](#tech-stack)
 4. [System Architecture](#system-architecture)
-5. [Frontend Structure](#frontend-structure)
-6. [Backend Structure](#backend-structure)
-7. [Database & APIs](#database--apis)
-8. [Frontend–Backend Integration](#frontend–backend-integration)
-9. [Issues & Improvement Opportunities](#issues--improvement-opportunities)
-10. [How to Run the Project](#how-to-run-the-project)
-11. [Contributing](#contributing)
+5. [Project Structure](#project-structure)
+6. [API Overview](#api-overview)
+7. [Frontend–Backend Integration](#frontend–backend-integration)
+8. [How to Run](#how-to-run)
+9. [Issues & Opportunities](#issues--opportunities)
+10. [Future Enhancements](#future-enhancements)
+11. [Developed By](#developed-by)
+12. [License](#license)
 
 ---
 
-# 🟦 **Overview**
+# 🌿 **Overview**
 
-PLANORA is a **web-based event management platform** that delivers:
+**PlayHive** is a **full-stack web platform** offering multiple mini-games with user accounts, leaderboards, rulebooks, and an admin panel.
 
-* Event discovery and registration
-* User account management
-* Event booking & booking history
-* Admin dashboard for event & user management
-* JDBC + MySQL-powered backend with REST-like servlets
+It includes:
 
-Your project is split into two main areas:
+* MindLoop, ShapeShifter, Emoji Decoder, Syntax Sprint
+* User registration, login, and profile management
+* Leaderboards & score tracking
+* Admin functionality for monitoring and managing the platform
+* REST APIs backed by Spring Boot & MySQL
 
-### ✔ **Frontend (JSP + HTML/CSS/JS)**
+**Project Folders:**
 
-Located inside:
-
-```
-src/main/webapp/
-```
-
-### ✔ **Backend (Java Servlets + JDBC + MySQL)**
-
-Located inside:
-
-```
-src/main/java/com/portal/
-```
+* `PlayHive Frontend/` – HTML/CSS/JS
+* `PlayHive Backend/` – Spring Boot + MySQL
 
 ---
 
-# ✨ **Features**
+# ⭐ **Key Features**
 
-### 👤 **User Module**
+## 🎮 Mini-Games
 
-* Registration & login
-* Browse upcoming events
-* Book events with a single click
-* View and manage bookings
+* MindLoop – Brain challenges
+* ShapeShifter – Puzzle & pattern game
+* Emoji Decoder – Fun decoding game
+* Syntax Sprint – Coding challenge game
+
+**Each includes:**
+
+* Gameplay page
+* Rulebook
+* Leaderboard (if applicable)
+
+## 👤 User System
+
+* Register & login
+* Profile page & account management
 * Secure logout
 
-### 🛠 **Admin Module**
+## 🧭 General Pages
 
-* Create, update, delete events
-* Manage user accounts
-* View & track all bookings
-* CRUD operations via JSP/Servlets
+* Home, Games Overview, About Us, Contact, Features
+* Admin Panel
 
-### 🎨 **Frontend Experience**
-
-* Responsive JSP pages
-* Event cards, banners, visual listings
-* Styled with HTML5, CSS3, JavaScript
-* Intuitive booking workflow
-
-### 💾 **Backend Features**
+## 🗂 Backend Supports
 
 * User authentication & authorization
-* Booking management
-* Event CRUD operations
-* JDBC + MySQL integration
-* JSON support (where applicable)
+* Score submission & leaderboard retrieval
+* Database storage in MySQL
+* REST APIs for frontend integration
 
 ---
 
-# 🛠️ **Tech Stack**
+# 🛠 **Tech Stack**
 
 ## **Frontend**
 
-* JSP, HTML5, CSS3, JavaScript
+* HTML5, CSS3, JavaScript (ES6)
+* Media assets (JPEG, PNG)
 
 ## **Backend**
 
-* Java Servlets
-* JDBC
+* Java 17+
+* Spring Boot, Spring Web (REST APIs), Spring Data JPA
+* Hibernate ORM
 * MySQL
-
-## **Server**
-
-* Apache Tomcat (8 / 9 / 10)
+* Maven
 
 ## **Tools**
 
-* Eclipse / IntelliJ
+* Eclipse / IntelliJ IDEA
 * Git / GitHub
-* MySQL Workbench
 * Browser-based testing
 
 ---
@@ -122,186 +116,178 @@ src/main/java/com/portal/
 ```
           ┌──────────────────────────┐
           │        Frontend          │
-          │  JSP / HTML / CSS / JS   │
+          │  HTML / CSS / JS         │
           └──────────┬───────────────┘
-                     │  HTTP Requests (Form / AJAX)
+                     │  HTTP Requests (Fetch API)
                      ▼
           ┌──────────────────────────┐
           │        Backend           │
-          │  Java Servlets           │
+          │  Spring Boot REST API    │
           ├──────────────────────────┤
-          │  UserServlet             │
-          │  EventServlet            │
-          │  BookingServlet          │
-          │  DAO Layer (JDBC)       │
+          │  Auth Controller         │
+          │  Score Controllers       │
+          │  Services (Business)     │
+          │  Repositories (JPA)      │
           └──────────┬───────────────┘
                      ▼
           ┌──────────────────────────┐
           │         MySQL            │
-          │  Users / Events / Bookings│
+          │  Users / Scores Tables   │
           └──────────────────────────┘
 ```
 
 ---
 
-# 🗂 **Frontend Structure**
+# 🗂 **Project Structure**
+
+## Frontend
 
 ```
-src/main/webapp/
- ├── index.jsp
- ├── login.jsp
- ├── register.jsp
- ├── upcoming_event.jsp
- ├── event_booking.jsp
- ├── my_bookings.jsp
- ├── admin.jsp
- ├── logout.jsp
- ├── images/
- ├── css/
- └── js/
+PlayHive Frontend/
+ ├── index.html
+ ├── main.html
+ ├── games.html
+ ├── features.html
+ ├── aboutus.html
+ ├── contactus.html
+ ├── login.html
+ ├── register.html
+ ├── profile.html
+ ├── admin-panel.html
+ │
+ ├── mindloop.html
+ ├── mindlooprulebook.html
+ ├── mindloopleaderboard.html
+ │
+ ├── shapeshifter.html
+ ├── shapeshifterrulebook.html
+ ├── shapeshifterleaderboard.html
+ │
+ ├── emojidecoder.html
+ ├── emojiedecoderrulebook.html
+ │
+ ├── syntaxsprinit.html (typo)
+ ├── Syntaxsprintrulebook.html
+ │
+ └── media/
 ```
 
-### ⚠️ Notes
+## Backend
 
-* All JSP pages are dynamic
-* CSS/JS can be further modularized
-* Responsive UI with basic styling
+```
+PlayHive Backend/
+ ├── pom.xml
+ ├── mvnw, mvnw.cmd
+ ├── src/
+ │   ├── main/java/com/games/
+ │   │   ├── controller/
+ │   │   ├── model/
+ │   │   ├── repository/
+ │   │   ├── service/
+ │   │   └── Gamenest1Application.java
+ │   └── main/resources/
+ │       ├── application.properties
+ │       └── static/
+ │           ├── login.html
+ │           └── signup.html
+ └── target/ (compiled output)
+```
 
 ---
 
-# 📦 **Backend Structure**
+# 🌐 **API Overview**
+
+### **Authentication**
 
 ```
-src/main/java/com/portal/
- ├── dao/
- │   ├── UserDao.java
- │   ├── EventDao.java
- │   └── BookingDao.java
- ├── beans/
- │   ├── User.java
- │   ├── Event.java
- │   └── Booking.java
- ├── servlet/
- │   ├── UserServlet.java
- │   ├── EventServlet.java
- │   └── BookingServlet.java
- └── conf/
-     └── DBConnection.java
+POST /auth/signup
+POST /auth/login
 ```
 
-### Backend Capabilities
+### **MindLoop**
 
-* Handles all HTTP requests from frontend JSP pages
-* CRUD operations via JDBC
-* Uses DAO pattern for database interactions
-
----
-
-# 🌐 **Database & APIs**
-
-### **MySQL Database Example**
-
-```sql
-CREATE DATABASE event_portal;
-USE event_portal;
-
-CREATE TABLE users(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
-    email VARCHAR(50),
-    password VARCHAR(255)
-);
-
-CREATE TABLE events(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    date DATE,
-    description TEXT
-);
-
-CREATE TABLE bookings(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    event_id INT,
-    FOREIGN KEY(user_id) REFERENCES users(id),
-    FOREIGN KEY(event_id) REFERENCES events(id)
-);
+```
+POST /mindloop/score
+GET  /mindloop/leaderboard
 ```
 
-### **Servlet APIs (Expected)**
+### **ShapeShifter**
 
-* `POST /UserServlet?action=register`
-* `POST /UserServlet?action=login`
-* `GET /EventServlet?action=list`
-* `POST /BookingServlet?action=book`
+```
+POST /shapeshifter/score
+GET  /shapeshifter/leaderboard
+```
+
+*(Additional controllers can be documented automatically)*
 
 ---
 
 # 🔗 **Frontend–Backend Integration**
 
-Example booking request using AJAX:
+Example: login request from frontend:
 
 ```js
-fetch('BookingServlet?action=book', {
-  method: 'POST',
-  body: new URLSearchParams({
-    user_id: userId,
-    event_id: eventId
+fetch("http://localhost:8080/auth/login", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    email: userEmail,
+    password: userPassword
   })
 })
-.then(res => res.text())
+.then(res => res.json())
 .then(data => console.log(data));
 ```
 
-Frontend JSP pages interact directly with backend servlets for dynamic content.
+Pages like `mindloopleaderboard.html` or `shapeshifterleaderboard.html` call backend endpoints to retrieve live scores.
+
+---
+
+# ▶️ **How to Run**
+
+## Backend
+
+```bash
+cd PlayHive Backend
+./mvnw spring-boot:run
+```
+
+*Backend runs at:* `http://localhost:8080`
+
+## Frontend
+
+* Open `PlayHive Frontend/index.html` in browser
+* Or use Live Server for local hosting
 
 ---
 
 # ⚠️ **Issues & Opportunities**
 
-### ✔ Frontend
+### Frontend
 
-* CSS/JS can be modularized
-* Add client-side validation
-* Improve responsive design
+* Inline JS & CSS, not separated
+* Typo in Syntax Sprint filename
+* Folder name contains a space
+* `.git` folder included accidentally
 
-### ✔ Backend
+### Backend
 
-* Needs better exception handling
-* Add API documentation / Swagger
-* Implement session-based or token-based auth
-
----
-
-# ▶️ **How to Run the Project**
-
-### **1️⃣ Setup Backend & Database**
-
-* Configure MySQL with `event_portal` database
-* Update DB credentials in `DBConnection.java`
-
-### **2️⃣ Deploy on Tomcat**
-
-* Add project to **Apache Tomcat 8–10**
-* Start server
-
-### **3️⃣ Open in Browser**
-
-```
-http://localhost:8080/PLANORA/
-```
+* Static login/signup pages differ from frontend
+* Needs CORS config for cross-origin requests
+* No Swagger API docs yet
 
 ---
 
-# 🤝 **Contributing**
+# 🌟 **Future Enhancements**
 
-Enhancements may include:
-
-* Modular CSS/JS separation
-* Responsive & modern UI
-* JWT-based authentication
-* Online payment integration
-* Analytics dashboard for admin
+* Add more games & levels
+* Responsive & mobile-first UI
+* JWT authentication & security
+* Real-time multiplayer
+* React / Next.js frontend migration
+* Deployment on Render / Vercel / Railway
+* Swagger & API documentation
+* UML & database ER diagrams
 
 ---
 
@@ -313,13 +299,12 @@ Enhancements may include:
 
 # 🔗 **License**
 
-This project is for **learning & personal use only**.
-All content, design, and code © **Akanksha Sawant – All Rights Reserved**.
-
-❗ Copying, redistributing, or reusing without explicit permission is prohibited.
+This project is **for learning and personal use only**.
+All code, design, and content are © **Akanksha Sawant – All Rights Reserved**.
+❗ Copying, redistributing, or reusing without permission is prohibited.
 
 ---
 
-I can also make a **version with animated badges, GIF demo links, and screenshot gallery** just like your Mahabharata Darshan README to make it visually engaging for GitHub.
+I can also **add visual enhancements** like **animated gradient headers, badges for each game, screenshots, and an API diagram** to make it **look like a portfolio-ready README** similar to top GitHub repos.
 
-Do you want me to create that enhanced version next?
+Do you want me to do that next?
