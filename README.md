@@ -29,15 +29,19 @@ License
 
 🌿 Overview
 
-PlayHive is a full-stack web platform offering multiple mini-games with:
+PlayHive is a full-stack web platform offering multiple mini-games with user accounts, leaderboards, rulebooks, and an admin panel.
 
-User registration & login
+It includes:
+
+MindLoop, ShapeShifter, Emoji Decoder, Syntax Sprint
+
+User registration, login, and profile management
 
 Leaderboards & score tracking
 
-Rulebooks for each game
+Admin functionality for monitoring and managing the platform
 
-Admin panel for monitoring users and scores
+REST APIs backed by Spring Boot & MySQL
 
 Project Folders:
 
@@ -47,13 +51,22 @@ PlayHive Backend/ – Spring Boot + MySQL
 
 ⭐ Key Features
 🎮 Mini-Games
-Game	Features
-MindLoop	Brain challenges
-ShapeShifter	Puzzle & pattern game
-Emoji Decoder	Fun decoding game
-Syntax Sprint	Coding challenge game
 
-Each game includes gameplay, rulebook, and leaderboard (if applicable).
+MindLoop – Brain challenges
+
+ShapeShifter – Puzzle & pattern game
+
+Emoji Decoder – Fun decoding game
+
+Syntax Sprint – Coding challenge game
+
+Each includes:
+
+Gameplay page
+
+Rulebook
+
+Leaderboard (if applicable)
 
 👤 User System
 
@@ -189,6 +202,9 @@ ShapeShifter
 POST /shapeshifter/score
 GET  /shapeshifter/leaderboard
 
+
+(Additional controllers can be documented automatically)
+
 🔗 Frontend–Backend Integration
 
 Example: login request from frontend:
@@ -205,7 +221,7 @@ fetch("http://localhost:8080/auth/login", {
 .then(data => console.log(data));
 
 
-Pages like mindloopleaderboard.html or shapeshifterleaderboard.html retrieve live data from backend endpoints.
+Pages like mindloopleaderboard.html or shapeshifterleaderboard.html call backend endpoints to retrieve live scores.
 
 ▶️ How to Run
 Backend
@@ -219,12 +235,12 @@ Frontend
 
 Open PlayHive Frontend/index.html in browser
 
-Or host via Live Server
+Or use Live Server for local hosting
 
 ⚠️ Issues & Opportunities
 Frontend
 
-Inline JS & CSS (no separation)
+Inline JS & CSS, not separated
 
 Typo in Syntax Sprint filename
 
@@ -236,9 +252,9 @@ Backend
 
 Static login/signup pages differ from frontend
 
-Needs CORS config
+Needs CORS config for cross-origin requests
 
-No Swagger / API documentation yet
+No Swagger API docs yet
 
 🌟 Future Enhancements
 
@@ -266,18 +282,8 @@ Akanksha Sawant
 
 This project is for learning and personal use only.
 All code, design, and content are © Akanksha Sawant – All Rights Reserved.
-❗ Copying or redistribution without permission is prohibited.
+❗ Copying, redistributing, or reusing without permission is prohibited.
 
-If you want, I can make it even more creative with:
+I can also add visual enhancements like animated gradient headers, badges for each game, screenshots, and an API diagram to make it look like a portfolio-ready README similar to top GitHub repos.
 
-Animated gradient headers
-
-Badges per game & feature
-
-Live screenshots or GIFs of games
-
-API flow diagram
-
-This will make the README portfolio-ready and eye-catching.
-
-Do you want me to do that?
+Do you want me to do that next?
