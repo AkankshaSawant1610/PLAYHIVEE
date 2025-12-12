@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galaxy Portal — Sign Up</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lottie -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #0a0024, #020010 70%);
+      overflow-y: auto; /* ✅ allow scrolling */
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#bfe7ff 1px, transparent 1px),
+        radial-gradient(#ffd6ff 1px, transparent 1px);
+      background-size: 220px 220px, 140px 140px, 80px 80px;
+      opacity: 0.5;
+      filter: blur(0.3px);
+      animation: twink 25s linear infinite;
+    }
+
+    @keyframes twink {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .nebula {
+      position: fixed;
+      right: -10%;
+      top: -10%;
+      width: 1100px;
+      height: 1100px;
+      background-image: url('https://images.unsplash.com/photo-1523983303491-64c2f0ce8b1e?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: blur(45px) saturate(120%);
+      opacity: 0.35;
+      mix-blend-mode: screen;
+      transform: rotate(15deg);
+    }
+
+    .card {
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(90deg, rgba(160,90,255,0.95), rgba(70,180,255,0.95));
+      box-shadow: 0 18px 60px rgba(20,10,40,0.6);
+    }
+
+    .card-inner {
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(2,6,23,0.85), rgba(6,3,20,0.75));
+      padding: 28px;
+      backdrop-filter: blur(10px) saturate(160%);
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      width: 100%;
+      color: white;
+      transition: all .2s;
+    }
+
+    .glass:focus {
+      outline: none;
+      border-color: rgba(160,90,255,0.6);
+      box-shadow: 0 0 12px rgba(160,90,255,0.4);
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .eye-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #aaa;
+      padding: 6px;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+    }
+
+    .eye-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .neon-btn {
+      background: linear-gradient(90deg, rgba(160,90,255,1), rgba(70,180,255,1));
+      color: #031022;
+      font-weight: 700;
+      padding: .8rem 1rem;
+      border-radius: 12px;
+      width: 100%;
+      transition: all .2s;
+    }
+
+    .neon-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(65,90,160,0.24);
+    }
+
+    .hint { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      .card-inner {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+      .eye-btn {
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <div class="nebula"></div>
+
+  <div class="min-h-screen flex items-center justify-center px-4 py-12 relative z-10">
+    <div class="w-full max-w-4xl card">
+      <div class="card-inner grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Left Visual -->
+        <div class="flex flex-col items-center justify-center text-center">
+          <h1 class="text-3xl font-bold mb-3">Join Galaxy Portal</h1>
+          <p class="hint mb-6">Create your cosmic identity</p>
+          <div id="heroLottie" class="w-72 h-72"></div>
+        </div>
+
+        <!-- Right Form -->
+        <div>
+          <h2 class="text-2xl font-extrabold mb-2">Sign Up</h2>
+          <p class="hint mb-6">Join the neon realm now</p>
+
+          <form id="signupForm" class="space-y-4" novalidate>
+            <div>
+              <label class="text-sm hint block mb-1">Username</label>
+              <input id="username" class="glass" type="text" placeholder="player99" required>
+            </div>
+
+            <div>
+              <label class="text-sm hint block mb-1">Email</label>
+              <input id="email" class="glass" type="email" placeholder="you@galaxy.gg" required>
+            </div>
+
+            <div>
+              <label class="text-sm hint block mb-1">Password</label>
+              <div class="password-wrapper">
+                <input id="password" class="glass pr-10" type="password" placeholder="••••••••" required>
+                <button type="button" id="togglePassword" class="eye-btn">
+                  <i data-lucide="eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" id="signupBtn" class="neon-btn">Create Account</button>
+            <div id="statusMsg" class="hint text-sm mt-2"></div>
+
+            <p class="hint text-sm mt-3">Already have an account?
+              <a href="login.html" class="underline">Login here</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Lottie animation
+    lottie.loadAnimation({
+      container: document.getElementById('heroLottie'),
+      renderer: 'svg', loop: true, autoplay: true,
+      path: 'https://assets8.lottiefiles.com/packages/lf20_w51pcehl.json'
+    });
+
+    // 👁️ Toggle password visibility
+    const password = document.getElementById('password');
+    const toggleBtn = document.getElementById('togglePassword');
+    toggleBtn.addEventListener('click', () => {
+      const show = password.type === 'password';
+      password.type = show ? 'text' : 'password';
+      toggleBtn.innerHTML = `<i data-lucide="${show ? 'eye-off' : 'eye'}"></i>`;
+      lucide.createIcons();
+    });
+
+    // 🚀 Register user
+    const form = document.getElementById('signupForm');
+    const msg = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      msg.textContent = "Registering...";
+
+      const data = new URLSearchParams();
+      data.append("username", document.getElementById("username").value);
+      data.append("email", document.getElementById("email").value);
+      data.append("password", document.getElementById("password").value);
+
+      try {
+        const res = await fetch("/api/users/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: data
+        });
+
+        const result = await res.text();
+        if (res.ok && result.toLowerCase().includes("success")) {
+          msg.innerHTML = '<span style="color:lightgreen;">✅ Registered successfully! Redirecting...</span>';
+          setTimeout(() => window.location.href = "login.html", 1000);
+        } else {
+          msg.innerHTML = `<span style="color:salmon;">❌ ${result}</span>`;
+        }
+      } catch {
+        msg.innerHTML = '<span style="color:salmon;">⚠️ Server error. Try again.</span>';
+      }
+    });
+  </script>
+</body>
+</html>

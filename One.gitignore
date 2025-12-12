@@ -1,0 +1,9 @@
+# Spring Boot / Java
+target/
+*.class
+*.jar
+
+# Node.js / Frontend
+node_modules/
+dist/
+build/

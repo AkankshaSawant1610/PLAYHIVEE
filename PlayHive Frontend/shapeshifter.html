@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shape Shifter — Play Hive</title>
+<style>
+  :root{
+    --bg:#fff5f5;
+    --panel:#ffecec;
+    --card:#fff0f0;
+    --accent:#ff6b6b;
+    --accent-2:#ff9f80;
+    --muted:#7a7a7a;
+    --glass: rgba(0,0,0,0.05);
+    --danger:#d90429;
+  }
+
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:linear-gradient(180deg,var(--bg),#fff0f0 70%);
+    color:#2b2b2b;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Navbar */
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .logo{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    color:white;
+  }
+  .title{font-size:18px;font-weight:700;color:var(--accent)}
+  .nav-links{display:flex;gap:16px;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
+  .nav-links a.active{color:var(--accent)}
+
+  /* Layout */
+  .wrap{max-width:1100px;margin:28px auto;padding:18px}
+  .top-row{display:flex;gap:18px;align-items:center}
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,230,230,0.7));
+    border:1px solid var(--glass);
+    padding:16px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(255,160,160,0.3);
+  }
+  .game-area{flex:1;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px}
+  .sidebar{width:300px}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+  button{
+    background:transparent;
+    border:1px solid rgba(0,0,0,0.08);
+    color:#2b2b2b;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:white;
+    border:none;
+  }
+  .btn-danger{
+    background:linear-gradient(90deg,var(--danger),#ff8f8f);
+    color:white;
+    border:none;
+  }
+
+  .muted{color:var(--muted);font-size:13px}
+  h1{margin:0;font-size:20px}
+  .desc{color:var(--muted);font-size:14px;margin-top:6px}
+
+  /* Grid and shapes */
+  .board{
+    width:100%;
+    max-width:720px;
+    background:transparent;
+    margin:8px auto;
+    border-radius:12px;
+    padding:12px;
+    display:grid;
+    gap:10px;
+    justify-items:center;
+    align-items:center;
+  }
+  .cell{
+    width:64px;
+    height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    transition:transform .12s ease, box-shadow .12s ease;
+    cursor:pointer;
+  }
+  .cell:active{transform:scale(.96)}
+
+  /* Info tiles */
+  .stats{display:flex;gap:12px;margin-top:12px}
+  .stat{
+    background:rgba(255,255,255,0.8);
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+    min-width:80px;
+    box-shadow:0 2px 6px rgba(255,100,100,0.2);
+  }
+  .small{font-size:12px;color:var(--muted)}
+
+  /* Modal */
+  .modal{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.4);
+    visibility:hidden;
+    opacity:0;
+    transition:opacity .25s;
+  }
+  .modal.active{visibility:visible;opacity:1}
+  .modal-card{
+    background:#fffafa;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid var(--glass);
+    box-shadow:0 10px 30px rgba(255,150,150,0.4);
+    max-width:420px;
+    text-align:center;
+  }
+  .success{color:var(--accent);font-weight:700}
+
+  @media (max-width:900px){
+    .top-row{flex-direction:column-reverse}
+    .sidebar{width:100%}
+    .board{max-width:420px}
+  }
+
+  .pulse{animation:pulse .9s ease}
+  @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <div class="logo">PH</div>
+      <div>
+        <div class="title">Play Hive</div>
+        <div class="muted" style="font-size:12px">Shape Shifter</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="games.html">Games</a>
+      <a href="shapeshifterrulebook.html">How it works</a>
+      <a href="contactus.html" class="active">Contact us</a>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <div class="top-row">
+      <!-- Game area -->
+      <div class="panel game-area">
+        <div style="display:flex;align-items:center;gap:12px;justify-content:center">
+          <h1>🔷 Shape Shifter</h1>
+        </div>
+        <div class="desc">Find and click the odd shape before the timer runs out. Differences get subtler as you level up.</div>
+
+        <!-- board -->
+        <div id="board" class="board" aria-live="polite" role="application" style="margin-top:18px"></div>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-top:14px;flex-wrap:wrap;justify-content:center">
+          <div class="small muted">Level</div><div id="levelBadge" class="stat">1</div>
+          <div class="small muted">Time</div><div id="timeBadge" class="stat">10s</div>
+          <div class="small muted">Score</div><div id="scoreBadge" class="stat">0</div>
+          <div class="small muted">Streak</div><div id="streakBadge" class="stat">0</div>
+        </div>
+
+        <div class="controls" style="margin-top:14px">
+          <button id="restartBtn" class="">Restart</button>
+          <button id="nextBtn" class="btn-primary">Next Level</button>
+          <button id="toggleSound" class="">Toggle Sound</button>
+        </div>
+
+        <div class="muted" style="margin-top:10px">Tip: differences can be color, rotation, shape or size. Higher levels mix multiple differences.</div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="panel">
+          <h3 style="margin:0">How to Play</h3>
+          <p class="muted small" style="margin-top:8px">Click the odd shape. Faster completion and longer streaks give higher points.</p>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0 0 6px 0;color:var(--accent)">Scoring</h4>
+            <ul class="muted small" style="margin:0;padding-left:18px">
+              <li>Base correct: +10 pts</li>
+              <li>Fast bonus: + (remaining seconds × 2)</li>
+              <li>Streak bonus: + (streak × 3)</li>
+              <li>Wrong click: -5 pts (streak reset)</li>
+            </ul>
+          </div>
+
+          <div style="margin-top:14px">
+            <h4 style="margin:0 0 6px 0;color:var(--accent)">Difficulty</h4>
+            <div class="muted small">Level increases: larger grid, subtler differences, multiple difference types.</div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h4 style="margin:0 0 6px 0;color:var(--accent)">Controls</h4>
+            <div class="muted small">Click shapes to select. Use Restart to reset progress.</div>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px">
+            <button id="rulesPlay" class="btn-primary" style="flex:1">Play Now</button>
+            <button id="shareBtn" class="">Share</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-card">
+      <div id="modalTitle" style="font-size:18px;margin-bottom:8px"></div>
+      <div id="modalBody" class="muted" style="margin-bottom:12px"></div>
+      <div style="display:flex;gap:8px;justify-content:center">
+        <button id="modalNext" class="btn-primary">Next</button>
+        <button id="modalClose" class="">Close</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+/*
+  Shape Shifter - Play Hive
+  Single-file game: grid of shapes, find the odd one.
+  Author: Generated for user
+*/
+
+/* ---------- Utilities ---------- */
+const rand = (min,max) => Math.floor(Math.random()*(max-min+1))+min;
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+const clamp = (v,min,max)=> Math.min(max, Math.max(min,v));
+
+/* ---------- Game state ---------- */
+let state = {
+  level: 1,
+  score: 0,
+  streak: 0,
+  timeLeft: 10,
+  running: false,
+  sound: true
+};
+
+/* ---------- Config ---------- */
+const LEVEL_CONFIG = (level=>{
+  // returns config for level
+  const gridBase = clamp(2 + Math.floor(level/2), 2, 7); // grid size
+  const time = clamp(10 - Math.floor(level/3), 4, 12);
+  const diffTypes = Math.min(1 + Math.floor(level/3), 3); // how many difference types to apply
+  return {grid: gridBase, time, diffTypes};
+});
+
+/* ---------- Visual primitives ---------- */
+const SHAPES = ['circle','square','triangle','star','hexagon','diamond','pentagon'];
+
+function createShapeSVG(shape, size=44, color='#6be4b4', rotation=0, stroke=0){
+  // returns an SVG element string for shape
+  // use inline SVG as DOM elements
+  const s = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  s.setAttribute('width',size);
+  s.setAttribute('height',size);
+  s.setAttribute('viewBox','0 0 100 100');
+  s.setAttribute('aria-hidden','true');
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('transform',`rotate(${rotation},50,50)`);
+  if(stroke) g.setAttribute('stroke',stroke);
+  s.appendChild(g);
+
+  const fill = color;
+  switch(shape){
+    case 'circle': {
+      const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',50); c.setAttribute('cy',50); c.setAttribute('r',36);
+      c.setAttribute('fill',fill);
+      g.appendChild(c);
+      break;
+    }
+    case 'square': {
+      const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      r.setAttribute('x',14); r.setAttribute('y',14); r.setAttribute('width',72); r.setAttribute('height',72);
+      r.setAttribute('rx',10);
+      r.setAttribute('fill',fill);
+      g.appendChild(r);
+      break;
+    }
+    case 'triangle': {
+      const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      p.setAttribute('points','50,12 88,82 12,82');
+      p.setAttribute('fill',fill);
+      g.appendChild(p);
+      break;
+    }
+    case 'star': {
+      // 5-point star path
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d','M50 12 L61 38 L88 38 L66 55 L75 82 L50 65 L25 82 L34 55 L12 38 L39 38 Z');
+      path.setAttribute('fill',fill);
+      g.appendChild(path);
+      break;
+    }
+    case 'hexagon': {
+      const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      p.setAttribute('points','30,12 70,12 88,50 70,88 30,88 12,50');
+      p.setAttribute('fill',fill);
+      g.appendChild(p);
+      break;
+    }
+    case 'diamond': {
+      const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      p.setAttribute('points','50,8 88,50 50,92 12,50');
+      p.setAttribute('fill',fill);
+      g.appendChild(p);
+      break;
+    }
+    case 'pentagon': {
+      const p = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+      p.setAttribute('points','50,10 85,38 70,80 30,80 15,38');
+      p.setAttribute('fill',fill);
+      g.appendChild(p);
+      break;
+    }
+    default: {
+      const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx',50); c.setAttribute('cy',50); c.setAttribute('r',36);
+      c.setAttribute('fill',fill);
+      g.appendChild(c);
+    }
+  }
+  return s;
+}
+
+/* ---------- DOM refs ---------- */
+const boardEl = document.getElementById('board');
+const levelBadge = document.getElementById('levelBadge');
+const timeBadge = document.getElementById('timeBadge');
+const scoreBadge = document.getElementById('scoreBadge');
+const streakBadge = document.getElementById('streakBadge');
+const restartBtn = document.getElementById('restartBtn');
+const nextBtn = document.getElementById('nextBtn');
+const toggleSoundBtn = document.getElementById('toggleSound');
+const rulesPlay = document.getElementById('rulesPlay');
+const shareBtn = document.getElementById('shareBtn');
+
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalNext = document.getElementById('modalNext');
+const modalClose = document.getElementById('modalClose');
+
+/* ---------- Audio (optional, generated via WebAudio) ---------- */
+let audioCtx = null;
+function ensureAudio(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+function playTone(freq,dur=0.08,vol=0.06){
+  if(!state.sound) return;
+  ensureAudio();
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type = 'sine';
+  o.frequency.value = freq;
+  g.gain.value = vol;
+  o.connect(g); g.connect(audioCtx.destination);
+  o.start();
+  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+  o.stop(audioCtx.currentTime + dur + 0.02);
+}
+
+/* ---------- Timer ---------- */
+let timerInterval = null;
+function startTimer(){
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    state.timeLeft -= 0.1;
+    if(state.timeLeft <= 0){
+      state.timeLeft = 0;
+      onTimeUp();
+    }
+    updateUI();
+  },100);
+}
+function stopTimer(){ clearInterval(timerInterval); timerInterval = null; }
+
+/* ---------- Game logic ---------- */
+
+function initLevel(){
+  const cfg = LEVEL_CONFIG(state.level);
+  state.timeLeft = cfg.time;
+  state.running = true;
+  updateUI();
+  renderBoard(cfg);
+  startTimer();
+}
+
+function renderBoard(cfg){
+  // grid size
+  const gridN = cfg.grid;
+  boardEl.style.gridTemplateColumns = `repeat(${gridN}, 1fr)`;
+  boardEl.innerHTML = '';
+  // choose base shape and attributes
+  const baseShape = pick(SHAPES);
+  const baseColor = pick(['#6be4b4','#3af7e0','#8be3ff','#ffd166','#ff8fab','#c792ff','#a7f3d0']);
+  const baseRotation = 0;
+  const baseSize = 64;
+  // pick odd cell index
+  const total = gridN*gridN;
+  const oddIndex = rand(0,total-1);
+  // build types of differences
+  const difTypes = [];
+  const allDiffs = ['color','shape','rotation','size','border'];
+  // choose difTypes.length items
+  const k = clamp(cfg.diffTypes,1,allDiffs.length);
+  const shuffled = allDiffs.sort(()=>Math.random()-0.5);
+  for(let i=0;i<k;i++) difTypes.push(shuffled[i]);
+
+  // To make it subtle at higher levels, control magnitude
+  const subtleFactor = clamp(1 - (state.level * 0.03), 0.45, 0.95);
+
+  for(let i=0;i<total;i++){
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    // generate attributes for this cell
+    let shape = baseShape;
+    let color = baseColor;
+    let rotation = baseRotation;
+    let size = baseSize;
+    let border = 0;
+
+    if(i === oddIndex){
+      // apply differences
+      if(difTypes.includes('shape')) {
+        // choose a different shape
+        const diffShapes = SHAPES.filter(s=>s!==baseShape);
+        shape = pick(diffShapes);
+      }
+      if(difTypes.includes('color')) {
+        // slightly alter color (pick a different hue)
+        const colorChoices = ['#ffb86b','#ff8fab','#ffd166','#6be4b4','#3af7e0','#8be3ff','#c792ff','#f6a6ff'];
+        color = pick(colorChoices.filter(c=>c!==baseColor));
+      }
+      if(difTypes.includes('rotation')) {
+        rotation = rand(20,160) * (subtleFactor < 0.7 ? 1 : 1); // rotation degree
+      }
+      if(difTypes.includes('size')) {
+        size = Math.round(baseSize * (subtleFactor + 0.5)); // minor size change
+      }
+      if(difTypes.includes('border')) {
+        border = 4;
+      }
+    } else {
+      // maybe random tiny variance to increase challenge
+      const jitter = Math.random();
+      if(Math.random() < Math.min(0.2,0.05*state.level)){
+        rotation = rand(-6,6);
+      }
+    }
+
+    // create SVG
+    const svg = createShapeSVG(shape,72,color,rotation,border ? '#042027' : 0);
+    // adjust scale if size changed
+    svg.style.width = `${size}px`;
+    svg.style.height = `${size}px`;
+    // attach to cell
+    cell.appendChild(svg);
+    cell.dataset.index = i;
+    cell.onclick = () => onCellClick(i, oddIndex, cell);
+    boardEl.appendChild(cell);
+  }
+  // subtle animation
+  boardEl.querySelectorAll('.cell').forEach((c,i)=> { c.style.opacity=0; setTimeout(()=>c.style.opacity=1, 40*i); });
+}
+
+/* ---------- Events ---------- */
+
+function onCellClick(index, oddIndex, el){
+  if(!state.running) return;
+  if(index === oddIndex){
+    // Correct!
+    handleCorrect(el);
+  } else {
+    // Wrong
+    handleWrong(el);
+  }
+}
+
+function handleCorrect(el){
+  // visual
+  el.classList.add('pulse');
+  setTimeout(()=>el.classList.remove('pulse'),900);
+  // scoring
+  const timeBonus = Math.round(state.timeLeft * 2);
+  state.streak += 1;
+  const streakBonus = state.streak * 3;
+  state.score += 10 + timeBonus + streakBonus;
+  playTone(880,0.06,0.07);
+  stopTimer();
+  state.running = false;
+  updateUI();
+  showModal('Nice!', `Correct — +${10 + timeBonus + streakBonus} pts`, false);
+}
+
+function handleWrong(el){
+  // visual shake
+  el.style.transform = 'translateY(2px) scale(.98)';
+  setTimeout(()=>el.style.transform='',160);
+  // penalty
+  state.score = Math.max(0, state.score - 5);
+  state.streak = 0;
+  playTone(220,0.12,0.08);
+  updateUI();
+}
+
+/* ---------- Timer End ---------- */
+function onTimeUp(){
+  stopTimer();
+  state.running = false;
+  state.streak = 0;
+  updateUI();
+  playTone(200,0.18,0.08);
+  showModal('Time up', 'You ran out of time — try the level again.', true);
+}
+
+/* ---------- UI + Flow ---------- */
+function updateUI(){
+  levelBadge.textContent = state.level;
+  timeBadge.textContent = `${Math.ceil(state.timeLeft)}s`;
+  scoreBadge.textContent = state.score;
+  streakBadge.textContent = state.streak;
+}
+
+function restartGame(){
+  state.level = 1;
+  state.score = 0;
+  state.streak = 0;
+  initLevel();
+}
+
+function nextLevel(){
+  state.level++;
+  initLevel();
+}
+
+function showModal(title, body, allowRetry){
+  modalTitle.textContent = title;
+  modalBody.textContent = body;
+  modal.classList.add('active');
+  modalNext.textContent = allowRetry ? 'Retry' : 'Continue';
+  // if allowRetry => keep level same, else increment available
+}
+
+function closeModal(){
+  modal.classList.remove('active');
+}
+
+/* ---------- Buttons ---------- */
+restartBtn.addEventListener('click', ()=>{
+  stopTimer();
+  restartGame();
+  playTone(600,0.06,0.04);
+});
+nextBtn.addEventListener('click', ()=>{
+  stopTimer();
+  nextLevel();
+  playTone(720,0.06,0.04);
+});
+toggleSoundBtn.addEventListener('click', ()=>{
+  state.sound = !state.sound;
+  toggleSoundBtn.textContent = state.sound ? 'Sound: ON' : 'Sound: OFF';
+});
+rulesPlay.addEventListener('click', ()=>{
+  if(!state.running){
+    initLevel();
+  }
+});
+shareBtn.addEventListener('click', ()=>{
+  // simple share attempt
+  const url = location.href;
+  if(navigator.share){
+    navigator.share({title:'Play Hive — Shape Shifter',text:'Try Shape Shifter on Play Hive!',url});
+  } else {
+    navigator.clipboard.writeText(url).then(()=> alert('Link copied to clipboard'));
+  }
+});
+
+/* modal buttons */
+modalClose.addEventListener('click', ()=>{
+  closeModal();
+});
+modalNext.addEventListener('click', ()=>{
+  closeModal();
+  if(state.running) return;
+  if(document.getElementById('modalNext').textContent === 'Retry'){
+    initLevel();
+  } else {
+    // continue to next level
+    state.level++;
+    initLevel();
+  }
+});
+
+/* ---------- Init ---------- */
+function init(){
+  updateUI();
+  // initial text for toggle
+  toggleSoundBtn.textContent = state.sound ? 'Sound: ON' : 'Sound: OFF';
+  // start first level automatically
+  initLevel();
+}
+init();
+
+/* ---------- Clean-up on page unload ---------- */
+window.addEventListener('beforeunload', ()=>stopTimer());
+</script>
+</body>
+</html>
