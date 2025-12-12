@@ -1,12 +1,4 @@
-Absolutely! I can create a **polished, GitHub-ready README for PlayHive** in the same style and structure as your PLANORA README, complete with:
 
-* 🎨 Animated gradient section headers
-* 🎮 Game badges for each mini-game
-* 📸 Screenshot gallery
-* 🗂 API diagram
-* Clean table of contents and sections
-
-Here’s the full draft following your PLANORA design style:
 
 ---
 
@@ -17,11 +9,16 @@ Here’s the full draft following your PLANORA design style:
 <p align="center">
   <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white" />
   <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white" />
+  <img src="https://img.shields.io/badge/Controller-FF6F61?style=for-the-badge&logoColor=white" />
+  <img src="https://img.shields.io/badge/Repository-0D9488?style=for-the-badge&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
 </p>
+
 
 ---
 
