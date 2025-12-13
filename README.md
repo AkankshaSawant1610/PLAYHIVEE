@@ -45,7 +45,26 @@ PlayHive Frontend/  – HTML/CSS/JS
 PlayHive Backend/   – Spring Boot + MySQL
 ```
 
+
+
 ---
+
+## 📸 **Screenshots**
+
+<p align="center">
+  <img src="Screenshots/1.jpeg" width="800" />
+</p>
+
+<p align="center">
+  <img src="Screenshots/2.jpeg" width="800" />
+</p>
+
+<p align="center">
+  <img src="Screenshots/3.jpg" width="800" />
+</p>
+
+---
+
 
 # ⭐ **Key Features**
 
