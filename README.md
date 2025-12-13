@@ -57,7 +57,11 @@ PlayHive Backend/   – Spring Boot + MySQL
   <img src="Screenshots/3.jpg" width="300" />
    <img src="Screenshots/4.jpeg" width="300" />
   <img src="Screenshots/5.jpeg" width="300" />
-  <img src="Screenshots/6.jpg" width="300" />
+  <img src="Screenshots/6.jpeg" width="300" />
+   <img src="Screenshots/7.jpg" width="300" />
+   <img src="Screenshots/8.jpeg" width="300" />
+  <img src="Screenshots/9.jpeg" width="300" />
+  <img src="Screenshots/10.jpeg" width="300" />
 </p>
 
 
