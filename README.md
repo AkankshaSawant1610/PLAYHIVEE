@@ -45,7 +45,7 @@ PlayHive Frontend/  – HTML/CSS/JS
 PlayHive Backend/   – Spring Boot + MySQL
 ```
 
-
+---
 
 ---
 
